@@ -1,0 +1,164 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5efe6;
+    color: #6d4d40;
+    text-align: center;
+}
+
+header {
+    background-color: #614439;
+    color: white;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.logo {
+    width: 190px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px;
+}
+
+
+.header-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+nav {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 2px solid #f2eeed;
+    border-radius: 8px;
+    background-color: #795547;
+    display: inline-block;
+    max-width: 500px;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.about-section, .team-section {
+    background-color: white;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 5px;
+    border: 1px solid #8d6e63;
+    width: 90%;
+    max-width: 900px;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-size: 16px;
+    border: 3px solid #8d6e63;
+}
+
+th, td {
+    border: 2px solid #8d6e63;
+    padding: 12px;
+    text-align: center;
+    color: #4e342e;
+}
+
+th {
+    background-color: #795547;
+    color: white;
+}
+
+a {
+    color: #4e342e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background-color: #614439;
+    color: white;
+    padding: 10px;
+    margin-top: 40px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .logo {
+        width: 140px;
+        top: 5px;
+        right: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    nav {
+        width: 90%;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        width: 120px;
+        top: 5px;
+        right: 5px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+}
