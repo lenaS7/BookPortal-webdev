@@ -1,0 +1,158 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5efe6;
+    color: #6d4d40;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #614439;
+    color: white;
+    padding: 40px 20px;
+    position: relative;
+}
+
+.logo {
+    width: 190px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0px;
+}
+
+.header-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+nav {
+    margin-top: 15px;
+    padding: 10px 20px;
+    border: 2px solid #f2eeed;
+    border-radius: 8px;
+    background-color: #795547;
+    display: inline-block;
+    max-width: 500px;
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contact-form {
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.form-group label {
+    width: 180px; /* Fixed width for all labels */
+    margin-bottom: 5px;
+    font-weight: bold;
+    flex-shrink: 0; /* Prevents the label from shrinking */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Ensures text doesn't overflow */
+    text-overflow: ellipsis; /* Adds ellipsis if text overflows */
+}
+
+.form-control {
+    flex: 1; /* Allows the input fields to take up remaining space */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensures padding and border are included in width */
+}
+
+.form-control:focus {
+    border-color: #614439;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #614439;
+    color: white;
+    padding: 8px 16px; /* Smaller padding for a smaller button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px; /* Smaller font size */
+    width: auto; /* Auto width instead of 100% */
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #795547;
+}
+
+footer {
+    background-color: #614439;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .contact-form {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .form-control {
+        font-size: 14px;
+    }
+
+    .form-group label {
+        width: 150px; /* Adjust label width for smaller screens */
+    }
+
+    button[type="submit"] {
+        width: auto; /* Auto width for smaller screens */
+        padding: 8px 16px;
+    }
+}
