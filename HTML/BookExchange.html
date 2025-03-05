@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Exchange</title>
+    <link rel="stylesheet" href="../CSS/BookExchange.css" />
+</head>
+<body>
+    <header>
+        <h1>Book Exchange</h1>
+        <img src="../Media/BookPortalLogo.png" alt="BookPortal Logo" class="logo" />
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="contactUs.html">Contact Us</a></li>
+                <li><a href="BookExchange.html">Book Exchange</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    <section class="description">
+        <h2>Welcome to the Textbook Lending Platform</h2>
+        <p>Connect with university students, educators, and book enthusiasts to lend, borrow, and request academic textbooks. Reduce costs and promote resource sharing.</p>
+        <div class="button-container">
+        <button onclick="viewAvailableBooks()">View Available Books</button>
+    </div>
+    </section>
+    
+    <section class="exchange-form">
+        <h2>List Your Book for Exchange</h2>
+        <form id="bookForm" action="backend_script.php" method="POST" enctype="multipart/form-data">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="book-title">Book Title:</label>
+            <input type="text" id="book-title" name="book-title" required>
+            
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+            
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="Science">Science</option>
+                <option value="Technology">Technology</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Literature">Literature</option>
+            </select>
+            
+            <label for="publish-year">Publication Year:</label>
+            <input type="number" id="publish-year" name="publish-year" min="1900" max="2025" required>
+            
+            <label for="condition">Book Condition:</label>
+            <select id="condition" name="condition" required>
+                <option value="New">New</option>
+                <option value="Good">Good</option>
+                <option value="Used">Used</option>
+                <option value="Damaged">Damaged</option>
+            </select>
+            
+            <label for="cover">Upload Book Cover:</label>
+            <input type="file" id="cover" name="cover" accept="image/*">
+            
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+            
+            <label for="exchange-type">Exchange Type:</label>
+            <select id="exchange-type" name="exchange-type" required>
+                <option value="Lend">Lend</option>
+                <option value="Borrow">Borrow</option>
+                <option value="Request">Request</option>
+            </select>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    
+    <section class="available-books">
+        <h2>Available Books for Exchange</h2>
+        <div id="books-list">
+            <p>No books listed yet. Be the first to list a book!</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 BookPortal. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        function viewAvailableBooks() {
+            document.getElementById('books-list').innerHTML = '<p>Loading available books...</p>';
+            // This function will fetch books from backend (to be implemented later)
+        }
+    </script>
+</body>
+</html>
