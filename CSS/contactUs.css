@@ -15,15 +15,17 @@ header {
     color: white;
     padding: 40px 20px;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo {
     width: 190px;
     position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0px;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
 }
 
 .header-content {
@@ -136,22 +138,66 @@ footer {
     width: 100%;
     text-align: center;
 }
+
+@media (max-width: 992px) {
+    .logo {
+        width: 150px;
+        left: 10px;
+    }
+    .contact-form {
+        width: 90%;
+        padding: 15px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+    .form-group label {
+        width: 150px;
+    }
+    button[type="submit"] {
+        width: auto;
+        padding: 8px 16px;
+    }
+}
+
 @media (max-width: 768px) {
     .logo {
-        position: relative;
-        width: 150px;
-        margin: 0 auto;
-        display: block;
+        width: 120px;
+        left: 10px;
     }
-}
-@media (max-width: 576px) {
-    .form-group {
-        flex-direction: column;
-        align-items: flex-start;
+    .contact-form {
+        width: 90%;
+        padding: 15px;
     }
-
+    .form-control {
+        font-size: 14px;
+    }
     .form-group label {
-        width: 100%;
+        width: 150px;
+    }
+    button[type="submit"] {
+        width: auto;
+        padding: 8px 16px;
     }
 }
 
+@media (max-width: 576px) {
+    .logo {
+        width: 100px;
+        left: 10px;
+    }
+    .contact-form {
+        width: 90%;
+        padding: 15px;
+    }
+    .form-control {
+        font-size: 14px;
+    }
+    .form-group label {
+        width: 120px;
+    }
+    button[type="submit"] {
+        width: auto;
+        padding: 8px 16px;
+    }
+}
