@@ -136,16 +136,15 @@ footer {
     width: 100%;
     text-align: center;
 }
+@media (max-width: 768px) {
+    .logo {
+        position: relative;
+        width: 150px;
+        margin: 0 auto;
+        display: block;
+    }
+}
 @media (max-width: 576px) {
-    .contact-form {
-        width: 90%;
-        padding: 15px;
-    }
-
-    .form-control {
-        font-size: 14px;
-    }
-
     .form-group {
         flex-direction: column;
         align-items: flex-start;
@@ -154,12 +153,5 @@ footer {
     .form-group label {
         width: 100%;
     }
-
-    button[type="submit"] {
-        width: 100%;
-    }
-
-    nav {
-        max-width: 100%;
-    }
 }
+
