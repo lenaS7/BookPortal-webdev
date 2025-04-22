@@ -1,224 +1,451 @@
-/* General body styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5efe6; /* Light background color */
-    color: #6d4d40; /* Dark brown color for text */
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensures body takes full height */
+/* CSS Custom Properties */
+:root {
+    --primary-color: #7C5644; /* Main brown color */
+    --secondary-color: #5A4032; /* Darker brown for contrast */
+    --background-light: #F5F5F5; /* Light background */
+    --text-white: #FFFFFF;
+    --text-black: #333333; /* Darker text for better contrast */
+    --shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    --border-color: #D3D3D3;
+    --focus-color: #A68B7A; /* Lighter brown for focus states */
 }
 
-/* Header styles */
-header {
-    background-color: #614439; /* Dark brown background */
-    color: white;
-    padding: 40px 20px;
-    position: relative;
+/* General body styles */
+body {
+    font-family: "Jost", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-black);
     display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Container for consistent width */
+.set-container-1440 {
+    max-width: 1440px;
+    width: 92%;
+    margin: 0 auto;
+}
+
+/* Header styles (no longer fixed) */
+header {
+    position: static; /* Changed from fixed to static */
+    width: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url("../Media/bg-accessability.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    position: relative;
 }
 
 /* Logo styles */
 .logo {
-    width: 190px;
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%); /* Centers logo vertically */
+    display: flex;
+    align-items: center;
 }
 
-/* Header content with title and navigation menu */
-.header-content {
-    max-width: 600px;
-    margin: 0 auto;
-    padding-top: 30px;
+.logo-img {
+    height: 100px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
 }
 
-/* Title styles */
-h1 {
-    margin: 0;
-    font-size: 32px;
+.logo-img:hover {
+    transform: rotate(360deg);
 }
 
-/* Navigation menu styles */
-nav {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: 2px solid #f2eeed; /* Light border for nav */
-    border-radius: 8px;
-    background-color: #795547; /* Light brown background */
-    display: inline-block;
-    max-width: 500px;
-    width: 100%;
-}
-
+/* Navigation menu */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* Navigation links styling */
 nav a {
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px 15px;
+    transition: color 0.3s ease, transform 0.2s ease, background-color 0.3s ease;
+    border-radius: 5px;
 }
 
-/* Main section styles */
+nav a:hover,
+nav a.active {
+    color: var(--text-white);
+    background-color: var(--focus-color);
+    transform: scale(1.1);
+}
+
+/* Hamburger menu for mobile */
+.menu-icon {
+    cursor: pointer;
+    display: none;
+    float: right;
+    padding: 28px 20px;
+    position: relative;
+    user-select: none;
+}
+
+.menu-icon .navicon {
+    background: var(--text-white);
+    display: block;
+    height: 2px;
+    position: relative;
+    transition: background 0.2s ease-out;
+    width: 18px;
+}
+
+.menu-icon .navicon:before,
+.menu-icon .navicon:after {
+    background: var(--text-white);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all 0.2s ease-out;
+    width: 100%;
+}
+
+.menu-icon .navicon:before {
+    top: 5px;
+}
+
+.menu-icon .navicon:after {
+    top: -5px;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.menu-btn:checked ~ nav ul {
+    max-height: 300px;
+    background-color: var(--text-white);
+    border-radius: 8px;
+    flex-direction: column;
+    padding: 15px;
+    box-shadow: var(--shadow);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+
+.menu-btn:checked ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+
+/* Main section */
 main {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 40px 20px; /* Reduced top padding since header isn't fixed */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.7) 59%, rgba(0, 0, 0, 0.85) 100%), url("../Media/img-6.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: auto; /* Changed from 90vh to auto */
 }
 
-/* Contact form styles */
+/* Contact form */
 .contact-form {
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
-    padding: 20px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for form */
+    padding: 40px;
+    background-color: var(--text-white);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    animation: fadeInUp 0.8s ease-out;
+    margin: 40px auto; /* Added margin for better spacing */
 }
 
-/* Form group styles for each input field */
+.contact-form h1 {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px;
+    animation: slideIn 0.5s ease-out;
+}
+
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
+    gap: 20px;
+    animation: fadeIn 0.5s ease-in;
 }
 
-/* Label styling for form fields */
 .form-group label {
-    width: 180px; 
-    margin-bottom: 5px;
-    font-weight: bold;
-    flex-shrink: 0; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-}
-
-/* General input field styles */
-.form-control {
-    flex: 1; 
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 200px;
+    font-weight: 700;
     font-size: 16px;
-    box-sizing: border-box; 
+    color: var(--text-black);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Focused input field styles */
+.form-control {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #FAFAFA;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form-control:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
 .form-control:focus {
-    border-color: #614439; /* Dark brown border when focused */
+    border-color: var(--focus-color);
+    box-shadow: 0 0 8px rgba(166, 139, 122, 0.3);
     outline: none;
+    transform: translateY(-2px);
 }
 
-/* Submit button styling */
-button[type="submit"] {
-    background-color: #614439; /* Dark brown background */
-    color: white;
-    padding: 8px 16px; 
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--text-white);
+    padding: 14px 32px;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 14px; 
-    width: auto; 
-    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: block;
+    margin: 30px auto 0;
+    width: 200px;
 }
 
-/* Hover effect for the submit button */
-button[type="submit"]:hover {
-    background-color: #795547; /* Lighter brown background on hover */
+.submit-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer styles */
+/* Footer (logo removed) */
 footer {
-    background-color: #614439; /* Dark brown background */
-    color: white;
-    padding: 10px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.4) 100%), url("../Media/bg-accessability.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+    color: var(--text-white);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.footer-main {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
+    max-width: 800px;
+    gap: 40px;
+}
+
+.footer-links, .social-media {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-links h3, .social-media h3 {
+    color: var(--text-white);
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.set-footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.set-footer-list li {
+    margin: 10px 0;
+}
+
+.set-footer-list li a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.set-footer-list li a:hover {
+    color: var(--focus-color);
+    transform: translateX(5px);
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: var(--text-white);
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--focus-color);
+    transform: rotate(360deg);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 20px;
+    width: 100%;
+}
+
+.set-text-align-center {
     text-align: center;
 }
 
-/* Media queries for responsiveness */
+.set-mt-20 {
+    margin-top: 20px;
+}
 
-/* Styles for screens larger than 992px (standard desktops) */
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive design */
 @media (max-width: 992px) {
-    .logo {
-        width: 150px;
-        left: 10px;
+    .logo-img {
+        height: 80px;
     }
     .contact-form {
         width: 90%;
-        padding: 15px;
+        padding: 30px;
     }
-    .form-control {
-        font-size: 14px;
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
     }
     .form-group label {
-        width: 150px;
+        width: 100%;
+        margin-bottom: 8px;
     }
-    button[type="submit"] {
-        width: auto;
-        padding: 8px 16px;
+    .form-control {
+        width: 100%;
+    }
+    .footer-main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .social-icons {
+        justify-content: center;
     }
 }
 
-/* Styles for screens larger than 768px (tablets) */
 @media (max-width: 768px) {
-    .logo {
-        width: 120px;
-        left: 10px;
+    .menu-icon {
+        display: inline-block;
     }
-    .contact-form {
-        width: 90%;
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        max-height: 0;
+        transition: max-height 0.3s ease-out;
+        overflow: hidden;
+        background-color: var(--text-white);
+    }
+    .menu-btn:checked ~ nav {
+        max-height: 300px;
+    }
+    nav ul {
+        flex-direction: column;
+        align-items: center;
         padding: 15px;
     }
-    .form-control {
-        font-size: 14px;
+    nav a {
+        color: var(--text-black);
     }
-    .form-group label {
-        width: 150px;
-    }
-    button[type="submit"] {
-        width: auto;
-        padding: 8px 16px;
+    .contact-form h1 {
+        font-size: 36px;
     }
 }
 
-/* Styles for screens larger than 576px (smaller devices) */
 @media (max-width: 576px) {
-    .logo {
-        width: 100px;
-        left: 10px;
+    .logo-img {
+        height: 60px;
     }
-    .contact-form {
-        width: 90%;
-        padding: 15px;
+    .contact-form h1 {
+        font-size: 28px;
     }
     .form-control {
         font-size: 14px;
+        padding: 12px 14px;
     }
-    .form-group label {
-        width: 120px;
-    }
-    button[type="submit"] {
-        width: auto;
-        padding: 8px 16px;
+    .submit-btn {
+        padding: 12px 24px;
+        width: 160px;
+        font-size: 16px;
     }
 }
