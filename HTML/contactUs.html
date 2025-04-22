@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Charset and viewport settings for mobile compatibility -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
+    <!-- Linking the CSS file for styling -->
     <link rel="stylesheet" href="../CSS/contactUs.css">
 </head>
 <body>
 
+    <!-- Header contains the logo and navigation menu -->
     <header>
       <img src="../Media/BookPortalLogo.png" alt="BookPortal Logo" class="logo">
-
-        <div class="header-content">
+      
+      <!-- Header content with the title and navigation menu -->
+      <div class="header-content">
           <h1>Contact Us</h1>
           <nav>
             <ul>
@@ -21,23 +25,29 @@
               <li><a href="BookExchange.html">Book Exchange</a></li>
             </ul>
           </nav>
-        </div>
-      </header>
+      </div>
+    </header>
 
-      <main>
+    <!-- Main section containing the contact form -->
+    <main>
         <div class="contact-form">
+          <!-- The form itself -->
           <form id="contactForm">
+              
+              <!-- First Name field -->
               <div class="form-group">
                   <label for="Fname">First Name:</label>
                   <input type="text" id="Fname" name="Fname"  
                   minlength="2" maxlength="12" pattern="[a-zA-Z]+" placeholder="e.g. Zahra" required class="form-control">
               </div>
     
+              <!-- Last Name field -->
               <div class="form-group">
                   <label for="Lname">Last Name:</label>
-                  <input type="text" id="Lname" name="Lname" required minlength="2" maxlength="12" placeholder="e.g. Alghamdi" pattern="[a-zA-Z]+" class="form-control">
+                  <input type="text" id="Lname" name="Lname" required minlength="2" maxlength="12" placeholder="e.g. Al-Anazi" pattern="[a-zA-Z]+" class="form-control">
               </div>
     
+              <!-- Gender field -->
               <div class="form-group">
                   <label for="gender">Gender:</label>
                   <select id="gender" name="gender" required class="form-control">
@@ -47,21 +57,25 @@
                   </select>
               </div>
     
+              <!-- Mobile field -->
               <div class="form-group">
                   <label for="mobile">Mobile:</label>
                   <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required placeholder="e.g. 0505555555" minlength="10" maxlength="10" class="form-control">
               </div>
     
+              <!-- Date of Birth field -->
               <div class="form-group">
                   <label for="DB">Date of Birth:</label>
                   <input type="date" id="DB" name="DB" required class="form-control">
               </div>
     
+              <!-- Email field -->
               <div class="form-group">
                   <label for="email">Email Address:</label>
                   <input type="email" id="email" name="email" pattern="[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-zA-Z]{2,4}" placeholder="name@domain.com" minlength="6" maxlength="50" required class="form-control">
               </div>
     
+              <!-- Language of Communication field -->
               <div class="form-group">
                   <label for="language">Language of Communication:</label>
                   <select id="language" name="language" required class="form-control">
@@ -72,21 +86,23 @@
                   </select>
               </div>
     
+              <!-- Message field -->
               <div class="form-group">
                   <label for="message">Message:</label>
                   <textarea id="message" name="message" placeholder="Enter comments here:" class="form-control"></textarea>
               </div>
     
+              <!-- Submit button for the form -->
               <button type="submit">Submit</button>
           </form>
         </div>
-      </main>
+    </main>
 
+    <!-- Footer with copyright information -->
     <footer>
         <p>&copy; 2025 BookPortal. All Rights Reserved.</p>
-      </footer>
+    </footer>
 
 </body>
 </html>
-
 

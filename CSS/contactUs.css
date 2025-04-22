@@ -1,17 +1,19 @@
+/* General body styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5efe6;
-    color: #6d4d40;
+    background-color: #f5efe6; /* Light background color */
+    color: #6d4d40; /* Dark brown color for text */
     text-align: center;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures body takes full height */
 }
 
+/* Header styles */
 header {
-    background-color: #614439;
+    background-color: #614439; /* Dark brown background */
     color: white;
     padding: 40px 20px;
     position: relative;
@@ -20,31 +22,35 @@ header {
     justify-content: center;
 }
 
+/* Logo styles */
 .logo {
     width: 190px;
     position: absolute;
     top: 50%;
     left: 20px;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* Centers logo vertically */
 }
 
+/* Header content with title and navigation menu */
 .header-content {
     max-width: 600px;
     margin: 0 auto;
     padding-top: 30px;
 }
 
+/* Title styles */
 h1 {
     margin: 0;
     font-size: 32px;
 }
 
+/* Navigation menu styles */
 nav {
     margin-top: 15px;
     padding: 10px 20px;
-    border: 2px solid #f2eeed;
+    border: 2px solid #f2eeed; /* Light border for nav */
     border-radius: 8px;
-    background-color: #795547;
+    background-color: #795547; /* Light brown background */
     display: inline-block;
     max-width: 500px;
     width: 100%;
@@ -60,6 +66,7 @@ nav ul {
     flex-wrap: wrap;
 }
 
+/* Navigation links styling */
 nav a {
     text-decoration: none;
     color: white;
@@ -67,6 +74,7 @@ nav a {
     font-size: 16px;
 }
 
+/* Main section styles */
 main {
     flex: 1;
     display: flex;
@@ -75,15 +83,17 @@ main {
     padding: 20px;
 }
 
+/* Contact form styles */
 .contact-form {
     max-width: 600px;
     width: 100%;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow for form */
 }
 
+/* Form group styles for each input field */
 .form-group {
     margin-bottom: 15px;
     text-align: left;
@@ -91,6 +101,7 @@ main {
     align-items: center;
 }
 
+/* Label styling for form fields */
 .form-group label {
     width: 180px; 
     margin-bottom: 5px;
@@ -101,6 +112,7 @@ main {
     text-overflow: ellipsis; 
 }
 
+/* General input field styles */
 .form-control {
     flex: 1; 
     padding: 10px;
@@ -110,13 +122,15 @@ main {
     box-sizing: border-box; 
 }
 
+/* Focused input field styles */
 .form-control:focus {
-    border-color: #614439;
+    border-color: #614439; /* Dark brown border when focused */
     outline: none;
 }
 
+/* Submit button styling */
 button[type="submit"] {
-    background-color: #614439;
+    background-color: #614439; /* Dark brown background */
     color: white;
     padding: 8px 16px; 
     border: none;
@@ -127,18 +141,23 @@ button[type="submit"] {
     margin-top: 10px;
 }
 
+/* Hover effect for the submit button */
 button[type="submit"]:hover {
-    background-color: #795547;
+    background-color: #795547; /* Lighter brown background on hover */
 }
 
+/* Footer styles */
 footer {
-    background-color: #614439;
+    background-color: #614439; /* Dark brown background */
     color: white;
     padding: 10px;
     width: 100%;
     text-align: center;
 }
 
+/* Media queries for responsiveness */
+
+/* Styles for screens larger than 992px (standard desktops) */
 @media (max-width: 992px) {
     .logo {
         width: 150px;
@@ -160,6 +179,7 @@ footer {
     }
 }
 
+/* Styles for screens larger than 768px (tablets) */
 @media (max-width: 768px) {
     .logo {
         width: 120px;
@@ -181,6 +201,7 @@ footer {
     }
 }
 
+/* Styles for screens larger than 576px (smaller devices) */
 @media (max-width: 576px) {
     .logo {
         width: 100px;
