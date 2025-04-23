@@ -127,3 +127,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+function viewAvailableBooks() {
+    try {
+        // مثلاً: عرض الكتب المتوفرة - لاحقاً ممكن تربطه بـ backend
+        const booksSection = document.getElementById("available-books");
+        if (!booksSection) throw new Error("Couldn't find the 'available-books' section.");
+        booksSection.scrollIntoView({ behavior: "smooth" });
+
+        // إزالة أي رسالة خطأ سابقة
+        const oldError = document.getElementById("error-message");
+        if (oldError) oldError.remove();
+
+    } catch (error) {
+        // إنشاء رسالة خطأ حمراء
+        const errorMessage = document.createElement("div");
+        errorMessage.id = "error-message";
+        errorMessage.textContent = "⚠️ " + error.message;
+        errorMessage.style.color = "red";
+        errorMessage.style.fontWeight = "bold";
+        errorMessage.style.marginTop = "20px";
+        errorMessage.style.textAlign = "center";
+
+        // إضافتها بعد زر العرض
+        const descriptionSection = document.getElementById("description");
+        descriptionSection.appendChild(errorMessage);
+    }
+}
