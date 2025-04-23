@@ -80,4 +80,50 @@ function viewAvailableBooks() {
         `;
     }, 1500);
 }
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("bookForm");
+
+    form.addEventListener("submit", function (e) {
+        let isValid = true;
+        clearErrors(); // إزالة الأخطاء السابقة
+
+        // تحقق من الحقول واحدة واحدة
+        const fields = [
+            { id: "name", message: "Please enter your name." },
+            { id: "email", message: "Please enter a valid email." },
+            { id: "book-title", message: "Please enter the book title." },
+            { id: "author", message: "Please enter the author's name." },
+            { id: "category", message: "Please select a category." },
+            { id: "publish-year", message: "Please enter a valid publication year." },
+            { id: "condition", message: "Please select the book condition." },
+            { id: "exchange-type", message: "Please select the exchange type." }
+        ];
+
+        fields.forEach(field => {
+            const input = document.getElementById(field.id);
+            if (!input || !input.value || input.value === "") {
+                showError(input, field.message);
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            e.preventDefault(); // منع الإرسال لو فيه أخطاء
+        }
+    });
+
+    function showError(input, message) {
+        const error = document.createElement("div");
+        error.className = "field-error";
+        error.style.color = "red";
+        error.style.marginTop = "5px";
+        error.textContent = "⚠️ " + message;
+        input.parentNode.appendChild(error);
+    }
+
+    function clearErrors() {
+        const oldErrors = document.querySelectorAll(".field-error");
+        oldErrors.forEach(e => e.remove());
+    }
+});
 
