@@ -80,3 +80,4 @@ function viewAvailableBooks() {
         `;
     }, 1500);
 }
+
