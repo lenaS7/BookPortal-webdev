@@ -3,105 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Exchange</title>
+    <title>Book Exchange | BookPortal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../CSS/BookExchange.css">
 </head>
 <body>
     <header>
-        <h1>Book Exchange</h1>
-        <img src="../Media/BookPortalLogo.png" alt="BookPortal Logo" class="logo">
-                <nav>
+        <div class="logo-container">
+            <img src="../Media/BookPortalLogo.png" alt="BookPortal Logo" class="logo">
+            <h1>Book Exchange</h1>
+        </div>
+        <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="aboutUs.html">About Us</a></li>
-                <li><a href="contactUs.html">Contact Us</a></li>
-                <li><a href="BookExchange.html">Book Exchange</a></li>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="aboutUs.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+                <li><a href="contactUs.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+                <li><a href="BookExchange.html"><i class="fas fa-exchange-alt"></i> Book Exchange</a></li>
             </ul>
         </nav>
     </header>
     
-    
-    <section class="description">
-        <h2>Welcome to the BookPortal</h2>
-        <p>Connect with university students, educators, and book enthusiasts to lend, borrow, and request academic textbooks. Reduce costs and promote resource sharing.</p>
-        <div class="button-container">
-        <button onclick="viewAvailableBooks()">View Available Books</button>
-    </div>
-    </section>
-    
-    <section class="exchange-form">
-        <h2>List Your Book for Exchange</h2>
-        <form id="bookForm" action="backend_script.php" method="POST" enctype="multipart/form-data">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="book-title">Book Title:</label>
-            <input type="text" id="book-title" name="book-title" required>
-            
-            <label for="author">Author:</label>
-            <input type="text" id="author" name="author" required>
-            
-            <label for="category">Category:</label>
-            <select id="category" name="category" required>
-                <option value="" disabled selected> Select category</option>
-
-                <option value="Science">Science</option>
-                <option value="Technology">Technology</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Literature">Literature</option>
-            </select>
-            
-            <label for="publish-year">Publication Year:</label>
-            <input type="number" id="publish-year" name="publish-year" min="1900" max="2025" required>
-            
-            <label for="condition">Book Condition:</label>
-            <select id="condition" name="condition" required>
-                <option value="" disabled selected> Select condition</option>
-
-                <option value="New">New</option>
-                <option value="Good">Good</option>
-                <option value="Used">Used</option>
-                <option value="Damaged">Damaged</option>
-            </select>
-            
-            <label for="cover">Upload Book Cover:</label>
-            <input type="file" id="cover" name="cover" accept="image/*">
-            
-            <label for="description">Description:</label>
-            <textarea id="description" name="description" rows="4"></textarea>
-            
-            <label for="exchange-type">Exchange Type:</label>
-            <select id="exchange-type" name="exchange-type" required>
-                <option value="" disabled selected> Select the type of exchange</option>
-
-                <option value="Lend">Lend</option>
-                <option value="Borrow">Borrow</option>
-                <option value="Request">Request</option>
-            </select>
-            
-            <button type="submit">Submit</button>
-        </form>
-    </section>
-    
-    <section class="available-books">
-        <h2>Available Books for Exchange</h2>
-        <div id="books-list">
-            <p>No books listed yet. Be the first to list a book!</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Share Knowledge, Save Resources</h2>
+            <p>Connect with students and educators to lend, borrow, and exchange academic textbooks. Build a community of readers while reducing costs.</p>
+            <a href="#exchange-form" class="btn">List a Book <i class="fas fa-arrow-down"></i></a>
         </div>
     </section>
     
+    <div class="container">
+        <section id="description" class="section description animated" style="animation-delay: 0.2s;">
+            <div class="section-title">
+                <h2>Welcome to BookPortal Exchange</h2>
+            </div>
+            <p>Our platform connects university students, educators, and book enthusiasts to create a sustainable academic community. By sharing resources, we help reduce the financial burden of expensive textbooks while promoting environmental responsibility.</p>
+            <p>Whether you're looking to lend a book you no longer need, borrow a required text for your studies, or request a hard-to-find academic resource, our exchange makes it simple and secure.</p>
+            <div class="button-container">
+                <button onclick="viewAvailableBooks()" class="btn"><i class="fas fa-book-open"></i> View Available Books</button>
+            </div>
+        </section>
+        
+        <section id="exchange-form" class="section exchange-form animated" style="animation-delay: 0.4s;">
+            <div class="section-title">
+                <h2>List Your Book for Exchange</h2>
+            </div>
+            <form id="bookForm" action="backend_script.php" method="POST" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name"><i class="fas fa-user"></i> Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-title"><i class="fas fa-book"></i> Book Title:</label>
+                        <input type="text" id="book-title" name="book-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author"><i class="fas fa-user-edit"></i> Author:</label>
+                        <input type="text" id="author" name="author" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category"><i class="fas fa-tags"></i> Category:</label>
+                        <select id="category" name="category" required>
+                            <option value="" disabled selected>Select category</option>
+                            <option value="Science">Science</option>
+                            <option value="Technology">Technology</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Literature">Literature</option>
+                            <option value="History">History</option>
+                            <option value="Business">Business</option>
+                            <option value="Art">Art & Design</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="publish-year"><i class="fas fa-calendar-alt"></i> Publication Year:</label>
+                        <input type="number" id="publish-year" name="publish-year" min="1900" max="2025" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="condition"><i class="fas fa-clipboard-check"></i> Book Condition:</label>
+                        <select id="condition" name="condition" required>
+                            <option value="" disabled selected>Select condition</option>
+                            <option value="New">New</option>
+                            <option value="Good">Good</option>
+                            <option value="Used">Used</option>
+                            <option value="Damaged">Damaged</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exchange-type"><i class="fas fa-exchange-alt"></i> Exchange Type:</label>
+                        <select id="exchange-type" name="exchange-type" required>
+                            <option value="" disabled selected>Select exchange type</option>
+                            <option value="Lend">Lend</option>
+                            <option value="Borrow">Borrow</option>
+                            <option value="Request">Request</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cover"><i class="fas fa-camera"></i> Upload Book Cover:</label>
+                    <input type="file" id="cover" name="cover" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label for="description"><i class="fas fa-align-left"></i> Description:</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Include any details about the book's condition, special notes, or your exchange terms..."></textarea>
+                </div>
+                
+                <button type="submit"><i class="fas fa-paper-plane"></i> Submit Listing</button>
+            </form>
+        </section>
+        
+        <section id="available-books" class="section available-books animated" style="animation-delay: 0.6s;">
+            <div class="section-title">
+                <h2>Available Books for Exchange</h2>
+            </div>
+            <div id="books-list" class="books-grid">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="../Media/book1.jpg" alt="Calculus Textbook">
+                        <span class="exchange-badge">For Lending</span>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Calculus: Early Transcendentals</h3>
+                        <p class="book-author">James Stewart</p>
+                        <div class="book-meta">
+                            <span>2015</span>
+                            <span>Mathematics</span>
+                        </div>
+                        <span class="book-condition condition-good">Good Condition</span>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="../Media/book2.jpg" alt="Physics Textbook">
+                        <span class="exchange-badge">For Borrowing</span>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">University Physics with Modern Physics</h3>
+                        <p class="book-author">Hugh D. Young, Roger A. Freedman</p>
+                        <div class="book-meta">
+                            <span>2019</span>
+                            <span>Science</span>
+                        </div>
+                        <span class="book-condition condition-new">New</span>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="../Media/book3.jpg" alt="Computer Science Textbook">
+                        <span class="exchange-badge">Requested</span>
+                    </div>
+                    <div class="book-details">
+                        <h3 class="book-title">Introduction to Algorithms</h3>
+                        <p class="book-author">Thomas H. Cormen</p>
+                        <div class="book-meta">
+                            <span>2009</span>
+                            <span>Technology</span>
+                        </div>
+                        <span class="book-condition condition-used">Used</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
     <footer>
-        <p>&copy; 2025 BookPortal. All Rights Reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About BookPortal</h3>
+                    <p>We're dedicated to making education more accessible by facilitating textbook sharing among students and educators.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                        <li><a href="aboutUs.html" style="color: white; text-decoration: none;">About Us</a></li>
+                        <li><a href="contactUs.html" style="color: white; text-decoration: none;">Contact Us</a></li>
+                        <li><a href="BookExchange.html" style="color: white; text-decoration: none;">Book Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 University Ave, Campus Town</p>
+                    <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                    <p><i class="fas fa-envelope"></i> info@bookportal.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 BookPortal. All Rights Reserved.</p>
+            </div>
+        </div>
     </footer>
     
-    <script>
-        function viewAvailableBooks() {
-            document.getElementById('books-list').innerHTML = '<p>Loading available books...</p>';
-            // This function will fetch books from backend (to be implemented later)
-        }
-    </script>
+    <script src="BookExchange.js"></script>
 </body>
 </html>
