@@ -15,9 +15,10 @@ body {
     color: var(--text-color);
     line-height: 1.6;
 }
-
 header {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
     color: var(--white);
     text-align: center;
     padding: 20px 0;
@@ -26,20 +27,21 @@ header {
     z-index: 100;
 }
 
+
 .logo-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    justify-content: flex-start; /* اجعل المحاذاة إلى اليسار */
+    gap: 20px; /* مسافة بين اللوجو والعنوان */
+    padding-left: 20px; /* مسافة من اليسار */
+    text-align: left;
 }
 
 .logo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-    transition: transform 0.3s ease;
+    position: static; /* أزل التموضع المطلق حتى لا يخرج من الـ flex container */
+    width: 60px; /* حجم مناسب للشعار بجانب العنوان */
 }
+
 
 .logo:hover {
     transform: rotate(15deg);
@@ -47,41 +49,38 @@ header {
 
 h1 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
 nav {
-    background-color: var(--secondary-color);
+    background: transparent; /* نجعل الخلفية شفافة لأن الهيدر يحتوي على الخلفية بالفعل */
     padding: 12px 0;
     margin-top: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    background: 
-        linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
+    box-shadow: none; /* إزالة الظل لأن الهيدر يحتوي على ظل بالفعل */
     color: var(--white);
-    text-align: center;
+    text-align: right;
     position: relative;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     z-index: 100;
     overflow: hidden;
 }
-
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: center;
+    justify-content: right;
     flex-wrap: wrap;
 }
+
 
 nav li {
     margin: 0 20px;
     position: relative;
 }
-
 nav a {
     color: var(--white);
     text-decoration: none;
