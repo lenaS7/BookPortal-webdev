@@ -1,35 +1,165 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const animatedElements = document.querySelectorAll('.animated');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.visibility = 'visible';
+document.addEventListener("DOMContentLoaded", function () {
+  const animatedElements = document.querySelectorAll(".animated");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.visibility = "visible";
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  animatedElements.forEach((element) => {
+    element.style.visibility = "hidden";
+    observer.observe(element);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+
+  const form = document.getElementById("bookForm");
+  const dataList = document.createElement("ul");
+  dataList.id = "dataList";
+  form.parentNode.insertBefore(dataList, form.nextSibling);
+
+  // Clear the list on page load
+  while (dataList.firstChild) {
+    dataList.removeChild(dataList.lastChild);
+  }
+
+  // Handle form submission
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (validateForm()) {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      fetch("http://localhost:3001/submit-book", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            alert("Data inserted successfully!");
+            // Clear the list
+            while (dataList.firstChild) {
+              dataList.removeChild(dataList.lastChild);
             }
+            // Add the current user's data (book-title, email, category) to the list
+            let listItem = document.createElement("li");
+            listItem.textContent = `${data.bookTitle} - ${data.email} - ${data.category}`;
+            dataList.appendChild(listItem);
+            // Reset the form
+            form.reset();
+          } else {
+            alert("Submission failed: " + JSON.stringify(data.errors));
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+          alert("An error occurred during submission. Please try again.");
         });
-    }, {threshold: 0.1});
-    
-    animatedElements.forEach(element => {
-        element.style.visibility = 'hidden';
-        observer.observe(element);
-    });
-    
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
+    }
+  });
+
+  // Validate all form fields (Frontend validation)
+  function validateForm() {
+    let isValid = true;
+    clearErrors();
+
+    const name = document.getElementById("name").value.trim();
+    if (!name) {
+      displayError("name", "Please enter your name.");
+      isValid = false;
+    }
+
+    const email = document.getElementById("email").value.trim();
+    if (!email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
+      displayError("email", "Please enter a valid email.");
+      isValid = false;
+    }
+
+    const bookTitle = document.getElementById("book-title").value.trim();
+    if (!bookTitle) {
+      displayError("book-title", "Please enter the book title.");
+      isValid = false;
+    }
+
+    const author = document.getElementById("author").value.trim();
+    if (!author) {
+      displayError("author", "Please enter the author's name.");
+      isValid = false;
+    }
+
+    const category = document.getElementById("category").value;
+    if (!category || category === "") {
+      displayError("category", "Please select a category.");
+      isValid = false;
+    }
+
+    const publishYear = document.getElementById("publish-year").value;
+    if (!publishYear || publishYear < 1900 || publishYear > 2025) {
+      displayError("publish-year", "Please enter a valid publication year.");
+      isValid = false;
+    }
+
+    const condition = document.getElementById("condition").value;
+    if (!condition || condition === "") {
+      displayError("condition", "Please select the book condition.");
+      isValid = false;
+    }
+
+    const exchangeType = document.getElementById("exchange-type").value;
+    if (!exchangeType || exchangeType === "") {
+      displayError("exchange-type", "Please select the exchange type.");
+      isValid = false;
+    }
+
+    return isValid;
+  }
+
+  // Display error message below the specified field
+  function displayError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    let errorElement = field.nextElementSibling;
+
+    if (!errorElement || !errorElement.classList.contains("error-message")) {
+      errorElement = document.createElement("div");
+      errorElement.className = "error-message";
+      field.parentNode.appendChild(errorElement);
+    }
+
+    errorElement.textContent = "Alert  " + message;
+    errorElement.style.color = "red";
+    errorElement.style.marginTop = "5px";
+  }
+
+  // Clear all error messages
+  function clearErrors() {
+    const errorElements = document.querySelectorAll(".error-message");
+    errorElements.forEach((element) => element.remove());
+  }
 });
 
 function viewAvailableBooks() {
-    const booksList = document.getElementById('books-list');
-    booksList.innerHTML = '<p class="no-books">Loading available books... <i class="fas fa-spinner fa-spin"></i></p>';
-    
-    setTimeout(() => {
-        booksList.innerHTML = `
+  const booksList = document.getElementById("books-list");
+  booksList.innerHTML =
+    '<p class="no-books">Loading available books... <i class="fas fa-spinner fa-spin"></i></p>';
+
+  setTimeout(() => {
+    booksList.innerHTML = `
             <div class="book-card">
                 <div class="book-cover">
                     <img src="../Media/book4.jpg" alt="Chemistry Textbook">
@@ -78,78 +208,5 @@ function viewAvailableBooks() {
                 </div>
             </div>
         `;
-    }, 1500);
-}
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("bookForm");
-
-    form.addEventListener("submit", function (e) {
-        let isValid = true;
-        clearErrors(); // إزالة الأخطاء السابقة
-
-        // تحقق من الحقول واحدة واحدة
-        const fields = [
-            { id: "name", message: "Please enter your name." },
-            { id: "email", message: "Please enter a valid email." },
-            { id: "book-title", message: "Please enter the book title." },
-            { id: "author", message: "Please enter the author's name." },
-            { id: "category", message: "Please select a category." },
-            { id: "publish-year", message: "Please enter a valid publication year." },
-            { id: "condition", message: "Please select the book condition." },
-            { id: "exchange-type", message: "Please select the exchange type." }
-        ];
-
-        fields.forEach(field => {
-            const input = document.getElementById(field.id);
-            if (!input || !input.value || input.value === "") {
-                showError(input, field.message);
-                isValid = false;
-            }
-        });
-
-        if (!isValid) {
-            e.preventDefault(); // منع الإرسال لو فيه أخطاء
-        }
-    });
-
-    function showError(input, message) {
-        const error = document.createElement("div");
-        error.className = "field-error";
-        error.style.color = "red";
-        error.style.marginTop = "5px";
-        error.textContent = "⚠️ " + message;
-        input.parentNode.appendChild(error);
-    }
-
-    function clearErrors() {
-        const oldErrors = document.querySelectorAll(".field-error");
-        oldErrors.forEach(e => e.remove());
-    }
-});
-
-function viewAvailableBooks() {
-    try {
-        // مثلاً: عرض الكتب المتوفرة - لاحقاً ممكن تربطه بـ backend
-        const booksSection = document.getElementById("available-books");
-        if (!booksSection) throw new Error("Couldn't find the 'available-books' section.");
-        booksSection.scrollIntoView({ behavior: "smooth" });
-
-        // إزالة أي رسالة خطأ سابقة
-        const oldError = document.getElementById("error-message");
-        if (oldError) oldError.remove();
-
-    } catch (error) {
-        // إنشاء رسالة خطأ حمراء
-        const errorMessage = document.createElement("div");
-        errorMessage.id = "error-message";
-        errorMessage.textContent = "⚠️ " + error.message;
-        errorMessage.style.color = "red";
-        errorMessage.style.fontWeight = "bold";
-        errorMessage.style.marginTop = "20px";
-        errorMessage.style.textAlign = "center";
-
-        // إضافتها بعد زر العرض
-        const descriptionSection = document.getElementById("description");
-        descriptionSection.appendChild(errorMessage);
-    }
+  }, 1500);
 }
