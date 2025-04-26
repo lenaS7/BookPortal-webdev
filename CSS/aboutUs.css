@@ -14,7 +14,9 @@ body {
     background-color: var(--light-bg);
     color: var(--text-color);
     line-height: 1.6;
-}header {
+}
+
+header {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
@@ -24,7 +26,7 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 100;
     display: flex;
-    justify-content: space-between; /* Keeps logo+title on left, nav on right */
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -32,7 +34,7 @@ body {
 .header-content {
     display: flex;
     align-items: center;
-    gap: 20px; /* Space between logo and title */
+    gap: 20px;
 }
 
 .logo {
@@ -50,7 +52,6 @@ h1 {
     font-weight: 700;
     letter-spacing: 1px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Removed text-align: left; to avoid forcing text alignment */
 }
 
 nav {
@@ -68,7 +69,7 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: flex-end; /* Keeps nav links on the right */
+    justify-content: flex-end;
     flex-wrap: wrap;
     gap: 15px;
 }
@@ -190,89 +191,82 @@ footer {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
+    padding: 40px 0;
     color: var(--white);
-    padding: 40px 20px; /* Adjusted padding to match image spacing */
     position: relative;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
     z-index: 100;
-    text-align: left; /* Align text to the left for sections */
+    overflow: hidden;
 }
 
 .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    justify-content: space-between; /* Distributes sections evenly */
-    flex-wrap: wrap;
-    max-width: 1200px; /* Match the main content width */
-    margin: 0 auto 30px; /* Center content and add bottom margin */
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 20px;
+    margin-bottom: 30px;
 }
 
 .footer-section {
     flex: 1;
-    min-width: 200px; /* Slightly smaller min-width for better responsiveness */
-    margin-bottom: 20px;
-    padding: 0 15px; /* Adjusted padding for tighter spacing */
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+    max-width: 300px;
 }
 
 .footer-section h3 {
-    font-size: 1.2rem; /* Slightly smaller to match image */
-    margin-bottom: 15px;
-    color: var(--white);
-    border-bottom: 1px solid var(--accent-color); /* Add underline like in the image */
-    padding-bottom: 5px;
+    font-size: 1.2rem;
     font-weight: 600;
+    margin-bottom: 15px;
+    position: relative;
+    padding-bottom: 10px;
+    color: var(--white);
+    text-transform: uppercase;
 }
 
-/* Remove the ::after pseudo-element since the image uses a border-bottom */
 .footer-section h3::after {
-    content: none; /* Remove the previous underline style */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: var(--accent-color);
 }
 
 .footer-section p {
-    font-size: 0.95rem; /* Slightly smaller font size to match image */
-    margin-bottom: 15px;
+    font-size: 0.95rem;
     line-height: 1.5;
+    margin: 0 0 15px 0;
 }
 
-/* Style for Quick Links */
-.footer-section ul {
+.set-footer-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.footer-section ul li {
-    margin-bottom: 10px;
+.set-footer-list li {
+    margin: 8px 0;
 }
 
-.footer-section ul li a {
+.set-footer-list li a {
     color: var(--white);
     text-decoration: none;
     font-size: 0.95rem;
     transition: color 0.3s ease;
 }
 
-.footer-section ul li a:hover {
+.set-footer-list li a:hover {
     color: var(--accent-color);
 }
 
-/* Style for Contact Info */
-.footer-section p i {
-    margin-right: 8px; /* Space between icon and text */
-}
-
-.footer-section p a {
-    color: var(--white);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-section p a:hover {
-    color: var(--accent-color);
-}
-
-/* Social Links */
 .social-links {
     display: flex;
-    gap: 10px; /* Tighter gap to match image */
+    gap: 15px;
     margin-top: 10px;
 }
 
@@ -286,53 +280,44 @@ footer {
     color: var(--accent-color);
 }
 
-/* Footer Bottom (Copyright) */
-.footer-bottom {
-    text-align: center;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2); /* Slightly lighter border */
-    font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.8); /* Slightly faded color to match image */
+.contact-info p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 5px 0;
 }
 
-/* Responsive Adjustments for Footer */
-@media (max-width: 768px) {
+.contact-info p i {
+    margin-right: 8px;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
     .footer-content {
-        flex-direction: column; /* Stack sections vertically on smaller screens */
+        flex-direction: column;
         align-items: center;
         text-align: center;
     }
-    
     .footer-section {
-        padding: 0;
-        margin-bottom: 30px;
+        align-items: center;
+        max-width: 100%;
     }
-    
-    .footer-section h3 {
-        border-bottom: 1px solid var(--accent-color);
-        padding-bottom: 5px;
+    .footer-section h3::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
-    
     .social-links {
-        justify-content: center; /* Center social links on smaller screens */
+        justify-content: center;
     }
-}
-
-@media (max-width: 480px) {
-    footer {
-        padding: 30px 15px; /* Reduce padding for smaller screens */
-    }
-    
-    .footer-section h3 {
-        font-size: 1.1rem;
-    }
-    
-    .footer-section p, .footer-section ul li a {
-        font-size: 0.9rem;
-    }
-    
-    .footer-bottom {
-        font-size: 0.85rem;
+    .contact-info p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -351,95 +336,11 @@ footer {
     animation-duration: 1s;
     animation-fill-mode: both;
 }
-@media (max-width: 992px) {
-    .hero {
-        height: 350px;
-    }
-    
-    .hero h2 {
-        font-size: 2.4rem;
-    }
-    
-    .form-row {
-        flex-direction: column;
-        gap: 0;
-    }
-}
 
-@media (max-width: 768px) {
-    header {
-        padding: 15px 0;
-    }
-    
-    .logo-container {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .logo {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    nav ul {
-        flex-direction: column;
-    }
-    
-    nav li {
-        margin: 5px 0;
-    }
-    
-    .hero {
-        height: 300px;
-    }
-    
-    .hero h2 {
-        font-size: 2rem;
-    }
-    
-    .section {
-        padding: 40px 0;
-    }
-    
-    .section-title h2 {
-        font-size: 1.8rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .hero {
-        height: 250px;
-    }
-    
-    .hero h2 {
-        font-size: 1.6rem;
-    }
-    
-    .hero p {
-        font-size: 1rem;
-    }
-    
-    .btn {
-        padding: 10px 20px;
-        font-size: 1rem;
-    }
-    
-    .description, .exchange-form, .available-books {
-        padding: 20px;
-    }
-    
-    .book-card {
-        max-width: 100%;
-    }
-}
 @media (max-width: 768px) {
     header {
         padding: 15px 20px;
-        flex-direction: row; /* Keep logo+title and nav side by side */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
@@ -447,12 +348,12 @@ footer {
     .header-content {
         display: flex;
         align-items: center;
-        gap: 15px; /* Slightly reduce gap for smaller screens */
+        gap: 15px;
     }
     
     nav ul {
-        justify-content: flex-end; /* Keep nav links on the right */
-        gap: 10px; /* Reduce gap for better fit */
+        justify-content: flex-end;
+        gap: 10px;
     }
     
     h1 {
@@ -464,7 +365,7 @@ footer {
     .header-content {
         display: flex;
         align-items: center;
-        gap: 10px; /* Further reduce gap */
+        gap: 10px;
     }
     
     h1 {
@@ -472,9 +373,9 @@ footer {
     }
     
     nav ul {
-        justify-content: flex-end; /* Keep nav links on the right */
-        flex-direction: row; /* Keep links horizontal */
-        gap: 8px; /* Tighter gap for small screens */
+        justify-content: flex-end;
+        flex-direction: row;
+        gap: 8px;
     }
     
     nav a {
