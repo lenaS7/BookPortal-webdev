@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
     <title>Contact Us</title>
-    <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="../CSS/contactUs.css" />
-    <!-- Google Fonts - Jost -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <!-- Font Awesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="../CSS/contactUs.css" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   </head>
   <body>
-    <!-- Header Section -->
     <header>
       <div class="header-content">
           <img src="../Media/BookPortalLogo.png" alt="BookPortal Logo" class="logo">
@@ -32,49 +24,17 @@
       </nav>
     </header>
 
-    <!-- Main Content Section -->
     <main>
       <section class="contact-form" aria-labelledby="contact-heading">
-        <h1 id="contact-heading" class="f-48-p">Contact Us</h1>
-        <!-- Contact Form -->
-        <form
-          id="contactForm"
-          role="form"
-          aria-label="Contact form"
-          novalidate
-          autocomplete="on"
-        >
+        <h2 id="contact-heading" class="f-48-p">Contact Us</h2>
+        <form id="contactForm" aria-label="Contact form" novalidate autocomplete="on">
           <div class="form-group">
             <label for="Fname">First Name:</label>
-            <input
-              type="text"
-              id="Fname"
-              name="Fname"
-              minlength="2"
-              maxlength="12"
-              pattern="[a-zA-Z]+"
-              placeholder="e.g. Zahra"
-              required
-              aria-required="true"
-              class="form-control"
-              autocomplete="given-name"
-            />
+            <input type="text" id="Fname" name="Fname" minlength="2" maxlength="12" pattern="[a-zA-Z]+" placeholder="e.g. Zahra" required aria-required="true" class="form-control" autocomplete="given-name">            required aria-required="true" class="form-control" autocomplete="given-name">
           </div>
           <div class="form-group">
             <label for="Lname">Last Name:</label>
-            <input
-              type="text"
-              id="Lname"
-              name="Lname"
-              minlength="2"
-              maxlength="12"
-              pattern="[a-zA-Z]+"
-              placeholder="e.g. Al-Anazi"
-              required
-              aria-required="true"
-              class="form-control"
-              autocomplete="family-name"
-            />
+            <input type="text" id="Lname" name="Lname" minlength="2" maxlength="12" pattern="[a-zA-Z]+" placeholder="e.g. Al-Anazi" required aria-required="true" class="form-control" autocomplete="family-name">
           </div>
           <div class="form-group">
             <label for="gender">Gender:</label>
@@ -92,47 +52,16 @@
           </div>
           <div class="form-group">
             <label for="mobile">Mobile:</label>
-            <input
-              type="tel"
-              id="mobile"
-              name="mobile"
-              pattern="[0-9]{10}"
-              placeholder="e.g. 0505555555"
-              minlength="10"
-              maxlength="10"
-              required
-              aria-required="true"
-              class="form-control"
-              autocomplete="tel"
-            />
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="e.g. 0505555555" minlength="10" maxlength="10" required aria-required="true" class="form-control" autocomplete="tel">
           </div>
           <div class="form-group">
             <label for="DB">Date of Birth:</label>
-            <input
-              type="date"
-              id="DB"
-              name="DB"
-              required
-              aria-required="true"
-              class="form-control"
-              autocomplete="bday"
-            />
+            <input type="date" id="DB" name="DB" required aria-required="true" class="form-control" autocomplete="bday">
           </div>
           <div class="form-group">
             <label for="email">Email Address:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-              placeholder="name@domain.com"
-              minlength="6"
-              maxlength="50"
-              required
-              aria-required="true"
-              class="form-control"
-              autocomplete="email"
-            />
+            <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" 
+            placeholder="name@domain.com" minlength="6" maxlength="50" required aria-required="true" class="form-control" autocomplete="email">
           </div>
           <div class="form-group">
             <label for="language">Language of Communication:</label>
@@ -160,13 +89,11 @@
           </div>
           <button type="submit" class="submit-btn">Submit</button>
         </form>
-        <!-- Submissions List -->
         <h2>Submissions</h2>
         <ul id="dataList"></ul>
       </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
       <div class="container">
           <div class="footer-content">
@@ -202,7 +129,6 @@
       </div>
   </footer>
 
-    <!-- External JS Script -->
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="../JavaScript/contactUs.js"></script>
   <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93620b868d8f6747',t:'MTc0NTYyODE5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
