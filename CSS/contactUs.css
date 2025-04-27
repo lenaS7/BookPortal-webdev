@@ -1,16 +1,14 @@
-/* CSS Custom Properties */
 :root {
-    --primary-color: #614439; /* Main brown color */
-    --secondary-color: #7a5b4f; /* Darker brown for contrast */
-    --accent-color: #e6b8a2; /* Accent color for highlights */
-    --light-bg: #f9f5f1; /* Light background */
-    --text-color: #4a3a30; /* Darker text for better contrast */
+    --primary-color: #614439; 
+    --secondary-color: #7a5b4f; 
+    --accent-color: #e6b8a2; 
+    --light-bg: #f9f5f1; 
+    --text-color: #4a3a30; 
     --white: #ffffff;
     --shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     --border-color: #ddd;
 }
 
-/* General body styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -24,7 +22,6 @@ body {
     line-height: 1.6;
 }
 
-/* Container for consistent width */
 .set-container-1440 {
     max-width: 1200px;
     width: 92%;
@@ -32,7 +29,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header styles */
 header {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -113,7 +109,6 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-/* Hamburger menu for mobile */
 .menu-icon {
     cursor: pointer;
     display: none;
@@ -181,7 +176,6 @@ nav a:hover {
     top: 0;
 }
 
-/* Main section */
 main {
     flex: 1;
     display: flex;
@@ -194,7 +188,6 @@ main {
     min-height: auto;
 }
 
-/* Contact form */
 .contact-form {
     max-width: 800px;
     width: 100%;
@@ -289,7 +282,6 @@ textarea.form-control {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Footer */
 footer {
     background: 
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),

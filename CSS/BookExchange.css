@@ -19,26 +19,26 @@ body {
         linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat fixed;
     color: var(--white);
-    padding: 20px 40px; /* Adjusted padding for better spacing */
+    padding: 20px 40px; 
     position: relative;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 100;
-    display: flex; /* Use flexbox to align logo+title and nav */
-    justify-content: space-between; /* Logo+title on left, nav on right */
-    align-items: center; /* Vertically center content */
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
     flex-wrap: wrap;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align logo and title to the left */
-    gap: 20px; /* Space between logo and title */
+    justify-content: flex-start; 
+    gap: 20px; 
     text-align: left;
 }
 
 .logo {
-    width: 60px; /* Keep logo size */
+    width: 60px; 
     transition: transform 0.3s ease;
 }
 
@@ -69,13 +69,13 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: flex-end; /* Align nav links to the right */
+    justify-content: flex-end; 
     flex-wrap: wrap;
-    gap: 15px; /* Adjusted gap for better spacing */
+    gap: 15px; 
 }
 
 nav li {
-    margin: 0; /* Remove extra margin */
+    margin: 0; 
 }
 
 nav a {

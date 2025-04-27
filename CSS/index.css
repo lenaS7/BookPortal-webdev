@@ -1,4 +1,3 @@
-/* General Styles */
 :root {
     --primary-color: #614439;
     --secondary-color: #7a5b4f;
@@ -20,7 +19,6 @@ body {
     line-height: 1.6;
 }
 
-/* Header Styles */
 header {
     background: transparent;
     color: var(--white);
@@ -73,7 +71,6 @@ nav a:hover {
     color: var(--primary-color);
 }
 
-/* Section Styles */
 section {
     padding: var(--section-spacing) 0;
 }
@@ -99,7 +96,6 @@ section {
     color: var(--accent-color);
 }
 
-/* Welcome Section */
 .welcome-section {
     min-height: 80vh;
     display: flex;
@@ -125,7 +121,6 @@ section {
     margin-bottom: 30px;
 }
 
-/* About Section */
 .about-section {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
@@ -185,7 +180,6 @@ section {
     border-radius: 5px;
 }
 
-/* Services Section */
 .services-section {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -245,7 +239,6 @@ section {
     line-height: 1.6;
 }
 
-/* CTA Section */
 .cta-section {
     background-color: rgba(124, 86, 68, 0.8);
     text-align: center;
@@ -297,7 +290,6 @@ section {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer Styles */
 footer {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 60px 0 20px;
@@ -364,7 +356,6 @@ footer {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Responsive Styles */
 @media (max-width: 992px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
